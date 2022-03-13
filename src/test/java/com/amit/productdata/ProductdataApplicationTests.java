@@ -3,6 +3,7 @@ package com.amit.productdata;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -60,8 +61,15 @@ class ProductdataApplicationTests {
 	@Test
 	@Order(5)
 	public void testDelete() {
-		if (productRepository.existsById(1))
+		if (productRepository.existsById(999))
 			productRepository.deleteById(1);
+	}
+	
+	@Test
+	@Order(6)
+	public void testFindByName() {
+		List<Product> products = productRepository.findByName("Washer");
+		products.forEach( p -> System.out.println(p.getPrice()));
 	}
 
 }

@@ -71,5 +71,19 @@ class ProductdataApplicationTests {
 		List<Product> products = productRepository.findByName("Washer");
 		products.forEach( p -> System.out.println(p.getPrice()));
 	}
+	
+	@Test
+	@Order(7)
+	public void testFindByNameAndDesc() {
+		List<Product> products = productRepository.findByNameAndDesc("Washer","Awesome");
+		products.forEach( p -> System.out.println(p.getPrice()));
+	}
+	
+	@Test
+	@Order(7)
+	public void testFindByPriceGreater() {
+		List<Product> products = productRepository.findByPriceGreaterThan(500d);
+		products.forEach( p -> System.out.println(p.getPrice()));
+	}
 
 }
